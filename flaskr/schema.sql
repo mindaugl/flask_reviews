@@ -6,3 +6,9 @@ CREATE TABLE IF NOT EXISTS books (
   reviews integer NOT NULL,
   publication_year integer NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
