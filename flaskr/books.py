@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, redirect, session, url_for
+    Blueprint, redirect, session, url_for, render_template
 )
 
 from flaskr.db import get_db
@@ -10,6 +10,6 @@ bp = Blueprint('books', __name__, url_prefix='/books')
 def books_list():
     books = get_db().execute(
         'SELECT * FROM books'
-    )
+    ).fetchall()
     session['books'] = books
-    return redirect(url_for("books.list"))
+    return render_template("books/list.html", books=books)
